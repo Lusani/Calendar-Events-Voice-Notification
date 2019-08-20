@@ -12,7 +12,7 @@ The authentication process require two things:
 
 First time authentication is achieved by executing the credentials.py script. The template for this script was obtained from the google developer website.
 
-Generating an audio notification corresponding to the event: 
+#Generating an audio notification corresponding to the event:# 
 
 Microsoft’s Bing Text To Speech API is used for this. This decision was made after I failed to create a billing account for the google translate service due to card issues. Moreover, the free use of the google translate API is largely undocumented and google translate is mostly a paid service. 
 
