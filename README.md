@@ -23,3 +23,31 @@ I did not have enough time to work on the front-end. Please see the log file for
 
 Sample output: 
 
+    2019-08-20 16:27:36,991 INFO     Starting Google Calendar Polling and Notification Service
+
+    2019-08-20 16:27:36,991 INFO     Using google developerkey AIzaSyCATEhSbhESLMialMmEA0xLmp_8xAh75AY
+    
+    2019-08-20 16:27:36,991 INFO     Using microsoft speech key c0b03292d4ac40f09e2b392f21a6ff44
+    
+    2019-08-20 16:27:36,991 INFO     Using calendar list: ['lravhuanzwo@gmail.com']
+    
+    2019-08-20 16:27:36,991 INFO     Beginning authentication...
+    
+    2019-08-20 16:27:36,993 INFO     Authentication completed
+
+    2019-08-20 16:27:37,599 INFO     Starting calendars polling & notification loop...
+    
+    2019-08-20 16:27:37,599 INFO     Checking calendars...
+    
+    2019-08-20 16:27:37,976 INFO     Event #0, Name: configure openstack, Start: 2019-08-21T15:00, Reminder at 30 minutes
+    
+    2019-08-20 16:27:37,976 INFO     Event #1, Name: configure epc, Start: 2019-08-22T15:30, Reminder at 30 minutes
+    
+    2019-08-20 16:27:37,977 INFO     Event #2, Name: attend market analysis meeting, Start: 2019-08-23T15:30, Reminder at 30 minutes
+    
+    2019-08-20 16:27:37,977 INFO     Event #3, Name: bake cheesy scones, Start: 2019-08-24T15:30, Reminder at 30 minutes
+
+
+
+
+
