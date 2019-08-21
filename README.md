@@ -8,11 +8,13 @@ The authentication process requires a client Id for the OAuth2 authentication pr
 
 First time authentication is achieved by executing the credentials.py script. The template for this script was obtained from the google developer website.
 
-## **Generating an audio notification corresponding to the event:**
+### **Generating an audio notification corresponding to the event:**
 
 Microsoft’s Bing Text To Speech API is used for this. This decision was made after I failed to create a billing account for the google translate service due to card issues. Moreover, the free use of the google translate API is largely undocumented and google translate is mostly a paid service. 
 
-Execute the TaskVoiceNotify.py script. 
+### **Run the code**
+
+    sudo python TaskVoiceNotify.py  
 
 I did not have enough time to work on the front-end. Please see the log file for results. The scripts runs in Daemon mode.
 
