@@ -1,10 +1,9 @@
 #!/usr/bin/env python
-
-# Google calendars polling script + audio reminders
 # Derived from :
 # 	https://developers.google.com/google-apps/calendar/instantiate
 # 	https://github.com/ehamiter/get-on-the-bus
 # 	http://blog.scphillips.com/2013/07/getting-a-python-script-to-run-in-the-background-as-a-service-on-boot/
+#Google calendar and task APIs quickstart  tutorial highly recommended
 #translate API available in  https://azure.microsoft.com/en-gb/services/cognitive-services
 import gflags
 import httplib2
