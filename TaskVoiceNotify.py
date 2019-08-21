@@ -3,6 +3,7 @@
 # 	https://developers.google.com/google-apps/calendar/instantiate
 # 	https://github.com/ehamiter/get-on-the-bus
 # 	http://blog.scphillips.com/2013/07/getting-a-python-script-to-run-in-the-background-as-a-service-on-boot/
+#	https://docs.microsoft.com/en-gb/azure/cognitive-services/speech-service/quickstart-python-text-to-speech
 #Google calendar and task APIs quickstart  tutorial highly recommended
 #translate API available in  https://azure.microsoft.com/en-gb/services/cognitive-services
 import gflags
@@ -30,36 +31,32 @@ from ConfigParser import SafeConfigParser
 from mstranslator import Translator
 
 ###########################
-# PERSONAL CONFIG FILE READ
+# Reading personal config file
 ###########################
 
 parser = SafeConfigParser()
 parser.read('TaskVoiceNotify.ini')
 
-# Read private developer for access to the google API
+# Read API key developer for access to the google API
 developerKeyString = parser.get('config', 'developerKey')
 
 # Read key for Microsoft Translate API
 microsoftKey = parser.get('config', 'microsoftKey')
 
-# Read list of calendars to be managed concurrently
-# NOTE: there is a main calendar, the one with which the credentials have been generated
-# Additional calendars must be configured as shared with this main calendar.
+# Read google calendar
 calendars = parser.get('config', 'calendars').split(',')
 
 # Read path to log file
 LOG_FILENAME = parser.get('config', 'log_filename')
 
-# Read how much time in advance the spoken reminder should be played, if no reminder is specified in gcalendar.
 REMINDER_DELTA_DEFAULT = parser.getint('config', 'reminder_minutes_default')
 
 #################
-#  LOGGING SETUP
+#  Logging
 #################
 LOG_LEVEL = logging.INFO  # Could be e.g. "DEBUG" or "WARNING"
 
 # Configure logging to log to a file, making a new file at midnight and keeping the last 3 day's data
-# Give the logger a unique name (good practice)
 logger = logging.getLogger(__name__)
 # Set the log level to LOG_LEVEL
 logger.setLevel(LOG_LEVEL)
@@ -72,7 +69,7 @@ handler.setFormatter(formatter)
 # Attach the handler to the logger
 logger.addHandler(handler)
 
-# Make a class we can use to capture stdout and sterr in the log
+# Make a class to capture stdout and sterr in the log
 class MyLogger(object):
 	def __init__(self, logger, level):
 		"""Needs a logger and a logger level."""
@@ -80,7 +77,6 @@ class MyLogger(object):
 		self.level = level
 
 	def write(self, message):
-		# Only log if there is a message (not just a new line)
 		if message.rstrip() != "":
 			self.logger.log(self.level, message.rstrip())
 
@@ -96,12 +92,12 @@ logger.info('Using calendar list: ' + str(calendars))
 logger.info("Beginning authentication...")
 
 ###############################
-# GOOGLE CALENDAR ACCESS SETUP
+# Accessing google calendar
 ###############################
 
 scope = 'https://www.googleapis.com/auth/calendar'
-flow = flow_from_clientsecrets('client_secret.json', scope=scope)
-
+flow = flow_from_clientsecrets('client_secret.json', scope=scope) 
+#client_secret.json is downloaded fron the google project account
 storage = Storage('credentials.dat')
 credentials = storage.get()
 
