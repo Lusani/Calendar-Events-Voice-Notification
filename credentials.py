@@ -15,8 +15,8 @@ FLAGS = gflags.FLAGS
 # applications
 # The client_id and client_secret can be found in Google Developers Console
 FLOW = OAuth2WebServerFlow(
-    client_id='847745404943-275s74ac4spgqetf3043rp69agr8gfrk.apps.googleusercontent.com',
-    client_secret='hjrDCNvfxnSCN_l-tuS40brg',
+    client_id='your_project_id',
+    client_secret='your_project_secret',
     scope='https://www.googleapis.com/auth/calendar',
     user_agent='Voice Task notifications/v1')
 
@@ -40,4 +40,4 @@ http = credentials.authorize(http)
 # the Google Developers Console
 # to get a developerKey for your own application.
 service = build(serviceName='calendar', version='v3', http=http,
-       developerKey='AIzaSyCATEhSbhESLMialMmEA0xLmp_8xAh75AY')
+       developerKey='your_API_key')
