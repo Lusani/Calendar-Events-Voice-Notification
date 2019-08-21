@@ -199,13 +199,12 @@ while True:
 
 			if 'summary' in event and 'start' in event and 'dateTime' in event['start']:
 				# Use this calendar event's summary text as the text to be spoken
-				# Also, remove any accentuated characters from the name (too lazy to handle text encoding properly)
 				name = unicodedata.normalize('NFKD', event['summary'].lower()).encode('ascii', 'ignore')
 				start = event['start']['dateTime'][:-9]
 				description = event.get('description', '')
 				repeat = True if description.lower() == 'repeat' else False
 
-				# By default, set announce time to (event start time) - (default value from config or from calendar itself)
+				# By default, set announce time to (event start time) 
 				# Unless some specific reminders are specified in the event
 				reminder_deltatime = defaultReminderDelta
 				if 'reminders' in event:
@@ -247,8 +246,6 @@ while True:
 					os.system('aplay audio_off.wav')
 					time.sleep(1)
 
-					# send a (simulated) IR command to the audio controller, so that it can resume its music playback (or just turn off again)
-					os.system('irsend simulate "0000000000022136 0 KEY_END_ANNOUNCE piremote"')
 					
 					if repeat == False:
 						# wait until the current minute ends, so as not to re-trigger this event, if no repeat condition is specified
